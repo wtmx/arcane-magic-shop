@@ -1,24 +1,36 @@
-"use client"
+import React from 'react';
 
-import * as React from "react"
-import * as SliderPrimitive from "@radix-ui/react-slider"
+interface DiscreteSliderProps {
+  value: number;
+  options: number[];
+  onChange: (value: number) => void;
+  formatLabel: (value: number) => string;
+}
 
-import { cn } from "@/lib/utils"
+const DiscreteSlider: React.FC<DiscreteSliderProps> = ({ value, options, onChange, formatLabel }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const index = parseInt(e.target.value);
+    onChange(options[index]);
+  };
 
-const Slider = React.forwardRef<
-  React.ComponentRef<typeof SliderPrimitive.Root>,
-  SliderPrimitive.SliderProps
->(({ className, ...props }, ref) => (
-  <SliderPrimitive.Root
-    ref={ref}
-    className={cn("relative flex w-full touch-none select-none items-center", className)}
-    {...props}
-  >
-    <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-secondary">
-      <SliderPrimitive.Range className="absolute h-full bg-primary" />
-    </SliderPrimitive.Track>
-    <SliderPrimitive.Thumb className="block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" />
-  </SliderPrimitive.Root>
-))
+  const currentIndex = options.indexOf(value);
 
-export default Slider
+  return (
+    <div className="flex items-center space-x-2">
+      <input
+        type="range"
+        min={0}
+        max={options.length - 1}
+        step={1}
+        value={currentIndex}
+        onChange={handleChange}
+        className="w-full"
+      />
+      <span className="w-20 text-right">{formatLabel(value)}</span>
+    </div>
+  );
+};
+
+DiscreteSlider.displayName = 'DiscreteSlider';
+
+export default DiscreteSlider;
