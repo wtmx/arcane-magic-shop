@@ -13,14 +13,13 @@ export default function ConfirmationPage() {
     const storedPowers = localStorage.getItem('purchasedPowers');
     if (storedPowers) {
       setPurchasedPowers(JSON.parse(storedPowers));
-      // Don't remove the data from localStorage here
     }
   }, []);
 
   const totalPrice = purchasedPowers.reduce((sum, power) => sum + power.price, 0);
 
   const handleReturnToHome = () => {
-    localStorage.removeItem('purchasedPowers'); // Clear the stored data when returning home
+    localStorage.removeItem('purchasedPowers');
     router.push('/');
   };
 
@@ -28,7 +27,7 @@ export default function ConfirmationPage() {
     <main className="min-h-screen bg-[#1A1A1A] text-white flex items-center justify-center">
       <div className="bg-[#252525] p-8 rounded-lg shadow-lg max-w-2xl w-full">
         <h1 className="text-4xl font-bold mb-6 text-center text-[#E62429]">Congratulations!</h1>
-        <p className="text-xl mb-6 text-center">You've successfully activated your superpowers!</p>
+        <p className="text-xl mb-6 text-center">You&apos;ve successfully activated your superpowers!</p>
         
         <h2 className="text-2xl font-semibold mb-4">Your Acquired Powers:</h2>
         <ul className="space-y-2 mb-6">
@@ -55,5 +54,3 @@ export default function ConfirmationPage() {
     </main>
   );
 }
-
-// confirmation page
