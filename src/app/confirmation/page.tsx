@@ -48,7 +48,7 @@ export default function ConfirmationPage() {
           onClick={handleReturnToHome}
           className="w-full bg-[#E62429] hover:bg-[#C41E23] text-white font-bold text-lg py-3 rounded-lg transition duration-300"
         >
-          Return to Superpower Emporium
+          Return to Arcane Magic Shop Homepage
         </Button>
       </div>
     </main>
