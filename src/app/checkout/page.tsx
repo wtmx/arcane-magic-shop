@@ -1,10 +1,10 @@
-export const dynamic = 'force-dynamic';
-
 'use client';
 
 import { useSearchParams } from 'next/navigation';
 import CheckoutForm from '../../components/CheckoutForm';
 import { SuperpowerType } from '../../components/SuperpowerList';
+
+export const dynamic = 'force-dynamic';
 
 export default function Checkout() {
   const searchParams = useSearchParams();

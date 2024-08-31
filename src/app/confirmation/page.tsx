@@ -1,10 +1,10 @@
-export const dynamic = 'force-dynamic';
-
 'use client';
 
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { SuperpowerType } from '../../components/SuperpowerList';
+
+export const dynamic = 'force-dynamic';
 
 export default function ConfirmationPage() {
   const searchParams = useSearchParams();
