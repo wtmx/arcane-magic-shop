@@ -1,5 +1,4 @@
 import SuperpowerList from '../components/SuperpowerList';
-import Link from 'next/link';
 
 export default function Home() {
   return (
