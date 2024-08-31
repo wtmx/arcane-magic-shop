@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import SuperpowerList from '../components/SuperpowerList';
 
 export default function Home() {

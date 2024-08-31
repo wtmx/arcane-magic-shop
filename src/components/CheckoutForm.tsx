@@ -2,8 +2,13 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { SuperpowerType } from './SuperpowerList';
 
-export default function CheckoutForm() {
+interface CheckoutFormProps {
+  cart: SuperpowerType[];
+}
+
+export default function CheckoutForm({ cart }: CheckoutFormProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,8 +25,9 @@ export default function CheckoutForm() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Here you would typically process the payment
-    // For now, we'll just redirect to a confirmation page
-    router.push('/confirmation');
+    // For now, we'll just redirect to a confirmation page with cart data
+    const cartData = encodeURIComponent(JSON.stringify(cart));
+    router.push(`/confirmation?cart=${cartData}`);
   };
 
   return (

@@ -2,6 +2,7 @@ import React from 'react';
 import { SuperpowerType } from './SuperpowerList';
 import { Button } from "@/components/ui/button";
 import { X } from 'lucide-react';
+import Link from 'next/link';
 
 interface CartPanelProps {
   cart: SuperpowerType[];
@@ -9,7 +10,7 @@ interface CartPanelProps {
   onCheckout: () => void;
 }
 
-export default function CartPanel({ cart, removeFromCart, onCheckout }: CartPanelProps) {
+export default function CartPanel({ cart, removeFromCart }: CartPanelProps) {
   const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
 
   return (
@@ -43,12 +44,12 @@ export default function CartPanel({ cart, removeFromCart, onCheckout }: CartPane
               <span className="text-[#E62429]">${totalPrice.toFixed(2)}</span>
             </div>
           </div>
-          <Button 
-            onClick={onCheckout}
-            className="w-full bg-[#E62429] hover:bg-[#C41E23] text-white font-bold text-lg py-3 rounded-lg transition duration-300"
+          <Link 
+            href={`/checkout?cart=${encodeURIComponent(JSON.stringify(cart))}`}
+            className="w-full bg-[#E62429] hover:bg-[#C41E23] text-white font-bold text-lg py-3 rounded-lg transition duration-300 inline-block text-center"
           >
             Activate Powers
-          </Button>
+          </Link>
         </>
       )}
     </div>
