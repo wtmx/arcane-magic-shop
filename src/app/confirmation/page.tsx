@@ -17,7 +17,7 @@ export default function ConfirmationPage() {
     <main className="min-h-screen bg-[#1A1A1A] text-white">
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold mb-8 text-center text-[#E62429]">Congratulations!</h1>
-        <p className="text-xl text-center mb-8">You've successfully activated your superpowers!</p>
+        <p className="text-xl text-center mb-8">You&apos;ve successfully activated your superpowers!</p>
         
         <div className="bg-[#252525] p-6 rounded-lg shadow-lg max-w-2xl mx-auto">
           <h2 className="text-2xl font-bold mb-4">Your Acquired Powers:</h2>
